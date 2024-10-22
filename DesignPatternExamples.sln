@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Factory_AbstractFactoryPatt
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DpendencyInjectionILogger", "LoggerExample\DpendencyInjectionILogger.csproj", "{F9CDD3E4-3DF9-427E-9C17-C709D1C6C934}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSimple", "EventSimple\EventSimple.csproj", "{73BC3A71-2791-4ADF-B621-1AA994544204}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventSimple", "EventSimple\EventSimple.csproj", "{73BC3A71-2791-4ADF-B621-1AA994544204}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Factory_FactoryMethodPattern", "Factory_FactoryMethodPattern\Factory_FactoryMethodPattern.csproj", "{6127F71F-83D4-4D7D-905D-DE08F8DD8AD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{73BC3A71-2791-4ADF-B621-1AA994544204}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73BC3A71-2791-4ADF-B621-1AA994544204}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73BC3A71-2791-4ADF-B621-1AA994544204}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6127F71F-83D4-4D7D-905D-DE08F8DD8AD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6127F71F-83D4-4D7D-905D-DE08F8DD8AD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6127F71F-83D4-4D7D-905D-DE08F8DD8AD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6127F71F-83D4-4D7D-905D-DE08F8DD8AD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -13,6 +13,8 @@ public abstract class IBookFactory
 
     public virtual IBook Make()
     {
-        return Create();
+        IBook book = Create();
+        // could do some generic actions here on the instantiated book.
+        return book;
     }
 }

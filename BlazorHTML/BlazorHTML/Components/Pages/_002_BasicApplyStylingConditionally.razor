@@ -1,0 +1,16 @@
+﻿@page "/Combinators"
+<h3>_002_BasicApplyStylingConditionally</h3>
+
+<div>
+    <h2>A h2 header preceding a couple of p elements</h2>
+    <p>The first p after the h2 header reacts to the + and the ~</p>
+    <div>
+        <p>This paragraph is stuffed in a div and therefore is not a direct child of grandparent div. Therefore, styling with > is not applied.</p>
+        <p>The paragraph does listen to "div p" as the space simply specifies 'is a descendant of'. This is the most used possibility.</p>
+    </div>
+    <p>The second p after the h2 header. does not do + but does do ~</p>
+</div>
+
+@code {
+
+}

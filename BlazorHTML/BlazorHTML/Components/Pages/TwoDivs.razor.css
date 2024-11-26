@@ -1,0 +1,30 @@
+﻿body {
+}
+
+.parent {
+    background-color: white;
+    padding: 20px;
+    margin: 10;
+    border:solid;
+    border-width:thick;
+}
+
+    .parent div {
+        background-color: rgb(105,105,109);
+        color: rebeccapurple;
+        padding: 10px;
+        margin: 0;
+        border:solid;
+        border-width:thin;
+    }
+
+    .parent .child-1 {
+        position: absolute;
+        color: brown;
+        border-width:thick;
+        border:dotted;
+        top:50px;
+    }
+    .parent .child-2{
+        position: static;
+    }

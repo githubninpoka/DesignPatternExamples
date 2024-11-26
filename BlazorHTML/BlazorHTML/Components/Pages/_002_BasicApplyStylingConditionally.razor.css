@@ -1,0 +1,16 @@
+﻿body {
+    font-family: 'Adobe Arabic'
+}
+h2 + p{
+    text-decoration-line:underline;
+}
+h2 ~ p{
+    border:solid;
+    border-width:thin;
+}
+h2 > p{
+    font-weight:700;
+}
+div p{
+    color:red;
+}

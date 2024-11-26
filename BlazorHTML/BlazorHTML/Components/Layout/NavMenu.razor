@@ -1,0 +1,53 @@
+﻿<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">BlazorHTML</a>
+    </div>
+</div>
+
+<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+
+<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
+    <nav class="flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="counter">
+                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="weather">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="2divs">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> 2divs
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="bcp">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> 001. Priority and colors
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/Combinators">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> 002. Combinators
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/boxmodel">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> 003. BoxModel
+            </NavLink>
+        </div>
+        
+    </nav>
+    
+</div>
+<BlazorHTML.Components.Pages.Weather></BlazorHTML.Components.Pages.Weather>
+

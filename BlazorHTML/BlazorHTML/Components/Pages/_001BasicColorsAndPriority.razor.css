@@ -1,0 +1,67 @@
+﻿body {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+    border-style: dashed;
+    border-width: thick;
+}
+
+.purple {
+    background-color: rebeccapurple;
+}
+
+.parent li {
+    text-decoration-line: underline;
+}
+
+.blue {
+    background-color: blue;
+    color: white;
+}
+
+li {
+    text-align: center;
+    color: black;
+    font-family: 'Segoe UI'
+}
+
+.lispecific {
+    text-align: left;
+    border: dashed;
+    border-width: thin;
+    color: black;
+    background-color: white;
+    font-family: 'Lucida Sans';
+}
+
+#lastli {
+    text-align: right;
+}
+
+[disabled] {
+    font-weight: 800;
+    text-decoration-line: line-through;
+    color: black;
+    background-color: white;
+}
+
+/* 1. no dot before the selector: it's for all items of a type
+    h1
+    div
+    p
+    ul
+    li
+    etc
+
+    2. a dot before the selector: create a class that can be assigned
+    .lispecific
+    .purple
+    .blue
+
+    3. hashtag for ids
+    #seconddiv
+
+    4. [attribute] -> e.g. disabled
+*/

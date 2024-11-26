@@ -1,0 +1,33 @@
+﻿@page "/boxmodel"
+<h3>_003_BoxModelPaddingBorderMargin</h3>
+
+<p class="explanation">Below is 2 boxes. A div and a p. They both have borders to show whats going on.<br/>
+    Notice how there is only one margin, not two. even though both elements have the margin set.<br/>
+    It's called collapsing and it's intentional.</p>
+<div>
+    <p>A first paragraph</p>
+    <p>A second paragraph</p>
+    <p>Third paragraph
+        <span>bit of text in a span with its own border to show padding at work in the surrounding p element</span>
+    </p>
+</div>
+<div id="DivForSizing">
+    <p>This Div shows how box-sizing works. The first div inside shows how margin is added to the box-sizing. the second div shows what happens with box-sizing content-box. The Third div shows border-box with no margin. The height of this container is set to 400 px</p>
+    <div id="Div1ForSizing">
+        <p>this is text inside the first div, see how the margin adds to the 100%</p>
+    </div>
+    <div id="Div2ForSizing">
+        <p>this is text inside the second div. With box-sizing of content-box, the padding and the border, and the margin are added to the 100%</p>
+    </div>
+    <div id="Div3ForSizing">
+        <p>This is text inside the third div. it has box-sizing border-box. and it has no margin. it fits exactly for width.</p>
+    </div>
+</div>
+<div>
+    <div class="moreDivsOnOneLine">first div block on one line</div>
+    <div class="moreDivsOnOneLine">second div block on one line</div>
+</div>
+
+@code {
+
+}

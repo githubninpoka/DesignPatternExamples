@@ -1,0 +1,39 @@
+﻿@page "/bcp"
+<h3>BasicColors</h3>
+<p>Just see the isolated css file</p>
+<p>What you see:
+    The highest priority is for inline style. style that is directly in the html.<br/>
+    The second priority is for #id.<br/>
+    Then comes the class=whatever, and the [attribute] like [disabled] <br/>
+    Lastly comes the element. like element {}.<br/>
+    also: you can specify classes/elements inside other classes/elements:<br/>
+    &nbsp; .parent li {} only affects the list items that live inside an element with a class=parent
+    they do not necessarily 'inherit' from that class or element. it's more of a more specific li than the other li's
+</p>
+<p> for a list of all in css:
+    https://developer.mozilla.org/en-US/docs/Web/CSS/Reference#index
+</p>
+<main>
+    <section class="red parent" >
+        <p> text that is not overriden. the parent is red because it has a class that sets red</p>
+        <h1 class="purple" > whever</h1>
+        <p>text that is not overridden to the red parent</p>
+        <p id="x" class="blue" > p that is again overridden in a class</p>
+        <ul>
+            <li>a li inside an element with class=parent. specified by .parent li. meaning: any li inside a class with parent</li>
+            <li>another li without any special markup except it's a li inside a red sction</li>
+            <li disabled>why do people start wars? a disabled list item but its line-through-ing is overwritten because attributes have less priority</li>
+            <button disabled>a disabled button somewhere inside a UL</button>
+            <li class="lispecific">zorro does not exist. a li with a class</li>
+            <li id="lastli">The last list item, a li with an id</li>
+        </ul>
+        <button disabled>another disabled button</button>
+    </section>
+    <ul>
+        <li>this li is not inside an element with a parent class specified so it should not have underlined text</li>
+    </ul>
+</main>
+
+@code {
+
+}

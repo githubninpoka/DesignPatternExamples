@@ -1,0 +1,74 @@
+﻿body {
+    margin:0;
+    border: solid;
+    border-width:thin;
+}
+.explanation
+{
+    font-family: 'Source Code Pro'
+}
+div{
+    border: solid;
+    border-width: thin;
+    margin:20 px;
+    padding:20 px;
+}
+div p{
+    border: solid;
+    border-width:thin;
+    margin:20 px;
+    padding: 20px;
+}
+span {
+    border: solid;
+    border-width:thin;
+}
+#DivForSizing{
+    /*height:400px;*/
+    width:100%; /*default*/
+    border:dashed;
+    border-color:red;
+    border-width:thick;
+    box-sizing:border-box;
+}
+
+#DivForSizing > p{
+    color:red;
+}
+#Div1ForSizing{
+    width:100%;
+    box-sizing:border-box;
+    margin:20px;
+    border:solid;
+    border-color:yellow;
+    border-width:thin;
+    padding:20px;
+}
+#Div2ForSizing {
+    width: 100%;
+    box-sizing:content-box;
+    margin: 20px;
+    border: solid;
+    border-color: yellow;
+    border-width: thin;
+    padding:20px;
+}
+#Div3ForSizing {
+    width: 100%;
+    box-sizing: border-box;
+    border: solid;
+    border-color: yellow;
+    border-width: thin;
+    padding: 20px;
+}
+
+.moreDivsOnOneLine{
+    display: inline-block;
+    text-align:center;
+    margin:0;
+    padding:0;
+    border:solid;
+    border-width:thin;
+    box-sizing:border-box;
+    width: 49%;
+}

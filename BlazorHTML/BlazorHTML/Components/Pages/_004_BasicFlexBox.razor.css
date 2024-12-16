@@ -1,0 +1,26 @@
+﻿body {
+
+}
+.pagebackground{
+    background-color:rgba(50,50,50,1);
+    color:white;
+    padding:2rem;
+}
+.bordered{
+    border:solid;
+    border-color:white;
+    border-width:thin;
+}
+.parent{
+    width:100%;
+    height:500px;
+    min-width:400px;
+    min-height:400px;
+}
+.setsize{
+    background: rgba(128,128,128,0.7);
+    width:150px;
+    height:150px;
+}
+
+

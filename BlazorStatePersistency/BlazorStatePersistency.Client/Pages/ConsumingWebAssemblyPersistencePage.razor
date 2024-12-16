@@ -1,0 +1,35 @@
+﻿@page "/was2"
+@inject IJSRuntime JSRuntime
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
+<h3>ConsumingWebAssemblyPersistencePage</h3>
+
+<p>JSRuntime data: </p>
+@if(_jsRuntimePerson is not null)
+{
+    <p>@_jsRuntimePerson</p>
+}
+
+<br/>
+Blazored LocalStorage data:
+@if(_blazorLocalStoragePerson is not null)
+{
+    <p>@_blazorLocalStoragePerson.FirstName, @_blazorLocalStoragePerson.LastName, @_blazorLocalStoragePerson.BirthDate</p>
+}
+
+
+
+@code {
+    private LocalPerson? _blazorLocalStoragePerson;
+    private string? _jsRuntimePerson;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender){
+            _jsRuntimePerson = await JSRuntime.InvokeAsync<string>("sessionStorage.getItem", "jsperson");
+            _blazorLocalStoragePerson = await localStorage.GetItemAsync<LocalPerson?>("BlazoredLocalStoragePerson");
+            StateHasChanged();
+        }
+    }
+}
+

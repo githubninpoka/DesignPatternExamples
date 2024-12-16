@@ -1,0 +1,31 @@
+﻿@page "/bootstrapsizeandbreakpoints"
+
+<div>
+    <h3>_007_BootstrapSizeAndBreakpoints</h3>
+    <div class="container w-100" style="height:200px">
+        <p>This div needs a set size for height to work, in this case 200px. See how the 4th div overflows the parent container? Keep that in mind</p>
+
+        <div class="h-25 d-inline-block">25%</div>
+        <div class="h-50 d-inline-block">50%</div>
+        <div class="h-75 d-inline-block">75%</div>
+        <div class="h-100 d-inline-block">100%</div>
+    </div>
+    <div class="w-100">
+        <div class="w-25">25%</div>
+        <div class="w-50">50%</div>
+        <div class="w-75">75%</div>
+        <div class="w-100">100%</div>
+    </div>
+    <div ><br />Example of how bootstrap is mobile first:<br /></div>
+    <div>
+        <div class="d-none d-sm-block">Visible from small screens</div>
+        <div class="d-none d-md-block">Visible from medium screens</div>
+        <div class="d-none d-lg-block">Visible from large screens</div>
+        <div class="d-none d-xl-block">Visible from extra large screens</div>
+        <div class="d-none d-xxl-block">Visible from extra extra large screens</div>
+        <div class="d-block">Always visible</div>
+    </div>
+</div>
+@code {
+
+}

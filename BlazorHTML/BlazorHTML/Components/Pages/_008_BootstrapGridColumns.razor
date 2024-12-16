@@ -1,0 +1,54 @@
+﻿@page "/bootstrapgridcolumns"
+
+<div>
+
+    <h3>BootstrapGridColumns</h3>
+    Basic Grid
+    <div>Just 2 columns with no slice specified:</div>
+    <div class="row">
+        <div class="col bg-light text-black border">1 of 2</div>
+        <div class="col bg-light text-black border">2 of 2</div>
+    </div>
+    <div>Just 3 columns with no slice specified:</div>
+    <div class="row">
+        <div class="col bg-light text-black border">1 of 3</div>
+        <div class="col bg-light text-black border">2 of 3</div>
+        <div class="col bg-light text-black border">3 of 3</div>
+    </div>
+    <div>3 columns with their slice specified:</div>
+    <div class="row">
+        <div class="col-6 bg-light text-black border">1 of 3 size 6</div>
+        <div class="col-4 bg-light text-black border">2 of 3 size 4</div>
+        <div class="col-2 bg-light text-black border">3 of 3 size 2</div>
+    </div>
+    <div>3 columns with their slice size specified, responsive:</div>
+    <div class="row">
+        <div class="col-md-6 col-lg-3 bg-light text-black border">1 of 4 size evenly</div>
+        <div class="col-md-6 col-lg-3 bg-light text-black border">2 of 4 size evenly</div>
+        <div class="col-md-6 col-lg-3 bg-light text-black border">3 of 4 size evenly</div>
+        <div class="col-md-6 col-lg-3 bg-light text-black border">4 of 4 size evenly</div>
+    </div>
+    <div>number of columns specified in the parent, responsive</div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+        <div class="col bg-light text-black border">1 of 4 size evenly</div>
+        <div class="col bg-light text-black border">2 of 4 size evenly</div>
+        <div class="col bg-light text-black border">3 of 4 size evenly</div>
+        <div class="col bg-light text-black border">4 of 4 size evenly</div>
+        <div class="col bg-light text-black border">1 of 4 size evenly</div>
+        <div class="col bg-light text-black border">2 of 4 size evenly</div>
+        <div class="col bg-light text-black border">3 of 4 size evenly</div>
+        <div class="col bg-light text-black border">4 of 4 size evenly</div>
+        <div class="col bg-light text-black border">1 of 4 size evenly</div>
+        <div class="col bg-light text-black border">2 of 4 size evenly</div>
+        <div class="col bg-light text-black border">3 of 4 size evenly</div>
+        <div class="col bg-light text-black border">4 of 4 size evenly</div>
+    </div>
+    <div>one column, but offset within the 12 slices</div>
+    <div class="row bg-light">
+        <div class="col-6 bg-light text-black border offset-3"> I'm in the middle cuz I'm offset by 3</div>
+    </div>
+</div>
+
+@code {
+
+}

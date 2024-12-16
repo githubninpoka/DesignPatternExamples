@@ -1,0 +1,11 @@
+﻿body {
+}
+
+div {
+    box-sizing: border-box;
+    background-color: rgba(50,50,50,1);
+    color: white;
+    border: solid;
+    border-color: white;
+    border-width: thin;
+}

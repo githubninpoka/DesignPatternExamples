@@ -1,0 +1,203 @@
+﻿body {
+}
+.pagecontainer{
+    container-name: pagecontainer;
+    container-type: inline-size;
+}
+
+div {
+    background-color: rgba(50,50,50,1);
+    color: white;
+    padding: 0.5rem;
+    border: solid;
+    border-color: white;
+    border-width: thin;
+}
+
+#parent1 {
+    width: 100%;
+    height: 300px;
+    min-width: 400px;
+    min-height: 350px;
+    padding:20px;
+    box-sizing:border-box;
+    
+    grid-template-columns: 1fr 100px 100px minmax(150px, 1fr); 
+    grid-template-rows: repeat(1fr);
+    grid-gap:1em;
+}
+
+.child{
+    background: rgba(128,128,128,0.7);
+}
+#child-1 {
+    background: rgba(255, 154, 72, 0.5);
+    grid-area: 1 / 1 / 4 / 2;
+}
+#child-2 {
+    background: rgba(255, 0, 0, 0.5);
+}
+#child-3 {
+    background: rgba(0, 128, 0, 0.5);
+    grid-column-start:3;
+    grid-column-end:5;
+    grid-row-start:1;
+    grid-row-end:3;
+}
+#child-4 {
+    background: rgba(0, 4, 255, 0.5);
+    grid-column-start:2;
+    grid-column-end:3;
+    grid-row-start:2;
+    grid-row-end:4;
+}
+#child-x{
+    display:flex;
+    flex-direction:column;
+    background-color: rgba(255, 216, 0,0.2);
+    grid-row-start:2;
+    grid-row-end:5;
+    grid-column-start:2;
+    grid-column-end:4;
+    z-index:2;
+    justify-content: space-between;
+}
+#badgediv{
+    display:flex;
+    border:none;
+    justify-content:end;
+    background:none;
+}
+#badgediv__badge{
+    background-color:rgba(255, 0, 0, 0.9);
+    display:inline-block;
+}
+
+#parent2 {
+    
+    grid-template-columns: repeat(6,minmax(150px, auto));
+    grid-template-rows: repeat(3,minmax(150px,auto));
+    grid-template-areas:
+        'sidebar header header header header header'
+        'sidebar body body body body body'
+        'sidebar footer footer footer footer footer';
+    grid-gap: 0.5em;
+    width: auto;
+    height: 100%;
+    min-width: 150px;
+    min-height: 400px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+@container pagecontainer (width < 1050px) {
+
+    #parent2 {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(minmax(150px,auto));
+        grid-template-areas:
+            'header'
+            'sidebar'
+            'body'
+            'footer';
+    }
+
+    #child-9{
+        grid-area: sidebar;
+    }
+
+    #child-x {
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(255, 216, 0,0.2);
+        grid-row-start: 1;
+        grid-row-end: 3;
+        grid-column-start: 4;
+        grid-column-end: 5;
+        z-index: 2;
+        justify-content: space-between;
+    }
+}
+@container pagecontainer (width < 500px) {
+
+    #parent2 {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(minmax(150px,auto));
+        grid-template-areas:
+            'header'
+            'body'
+            'footer';
+    }
+
+    #child-6 {
+        display: none;
+    }
+
+    #child-5 {
+        flex-direction: column;
+    }
+
+    #child-9 {
+        display: none;
+    }
+
+    #parent1 {
+        width: 100%;
+        min-width: 300px;
+        min-height: 350px;
+        padding: 20px;
+        box-sizing: border-box;
+        grid-template-columns: 1fr 1fr ;
+        grid-template-rows: repeat(1fr);
+        grid-gap: 1em;
+    }
+
+    #child-x {
+        display: none;
+    }
+
+    #child-3 {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 4;
+        grid-row-end: 6;
+    }
+}
+
+
+#child-5{
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+}
+#child-6{
+    grid-area: sidebar;
+}
+#child-7{
+    grid-area: body;
+}
+#child-8{
+    grid-area: footer;
+}
+
+#child-9{
+    background-color:rgba(128,128,128,0.5);
+    display: flex;
+    flex-direction: column;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    justify-content: space-between;
+    align-items: end;
+}
+#wildcarddiv {
+    display: flex;
+    border: none;
+    justify-content: end;
+    background: none;
+}
+#wildcarddiv__text {
+    background-color: rgba(255, 0, 0, 0.6);
+    display: inline-block;
+}

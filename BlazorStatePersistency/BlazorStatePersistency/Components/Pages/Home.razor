@@ -1,0 +1,167 @@
+﻿@page "/"
+@inject DIPerson DIPerson
+@inject SessionStorageContainer<Person> SessionStorageProtectedBrowserStorage
+@inject LocalStorageContainer<Person> LocalStorageProtectedBrowserStorage
+
+<PageTitle>Home</PageTitle>
+
+<div class="row">
+    <div class="col-md-10">
+        This is a demo for trying more than one way of persisting state across pages. The WebAssembly project will also contain local storage.<br />
+        N.B. Set rendermode to auto in App.razor, because some persistency will not carry across rendermode boundaries.
+    </div>
+    <div class="col-md-10">
+        <div>
+            This first example uses a simple class that is handed down from MainLayout as a cascading parameter. That way the data:
+            <ul>
+                <li>is available to all components that 'catch' the parameter.</li>
+                <li>is persisted, but only during the lifetime of the browser window.</li>
+                <li>is available as an instance for just this session. So no need for a service yet.</li>
+            </ul>
+            You can also use the builder.Services.AddCascadingValue method: https://learn.microsoft.com/en-us/aspnet/core/blazor/components/cascading-values-and-parameters?view=aspnetcore-8.0. Useful for instance for sharing theme-information
+            <br />
+        </div>
+        @if (PersonFromMainLayout is not null)
+        {
+            <div class="card">
+                <div class="card-header">Person:</div>
+                <div class="card-body">@PersonFromMainLayout.FirstName, @PersonFromMainLayout.LastName, born @PersonFromMainLayout.BirthDate</div>
+            </div>
+        }
+    </div>
+    <div class="col-md-10">
+        <div>This second example uses a dependency injected service, instantiated from the home page, and also available in the other pages.</div>
+        <ul>
+            <li>I've created it as singleton so every instance will share the data, read-write.</li>
+            <li>It persists as long as the application runs.</li>
+        </ul>
+        <div class="card">
+            <div class="card-header">Person2 (once entered by a user):</div>
+            @if (DIPerson is not null)
+            {
+                <div class="card-body">@DIPerson.FirstName, @DIPerson.LastName, born @DIPerson.BirthDate</div>
+            }
+        </div>
+        <div>
+            <EditForm Model="personFromForm" FormName="InjectedPersonForm" OnValidSubmit="SaveInjectedPersonAsync">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                <label for="FirstName">First Name</label>
+                <InputText @bind-Value="personFromForm.FirstName" />
+                <label for="LastName">Last Name</label>
+                <InputText @bind-Value="personFromForm.LastName" />
+                <label for="BirthDate">Birthdate</label>
+                <InputDate @bind-Value="personFromForm.BirthDate"></InputDate>
+                <button type="submit">Enter Person</button>
+            </EditForm>
+        </div>
+    </div>
+    <br/>
+    <div class="col-md-10">
+        <div>This third examples uses session storage ProtectedBrowserStorage, a type by Microsoft which relies on IJSRuntime</div>
+        <ul>
+            <li>The storage is encrypted</li>
+            <li>The storage is valid for the session</li>
+            <li>The service is Scoped or Transient. Does not matter, because session storage will not persist across tabs, but it will carry over normal navigation</li>
+            <li>I created a simple generic class that can store anything, for reuse</li>
+            <li>I had to tell blazor after the first render that state has changed, which I do not fully understand because the rendermode is interactive so the server should pick up model changes. however, other online resources also use this tactic. Even Microsoft uses it on their docs page on State management in Blazor</li>
+        </ul>
+        <div class="card">
+            <div class="card-header">Person3 (once entered by a user):</div>
+            @if (ServerStoragePerson is not null)
+            {
+                <div class="card-body">@ServerStoragePerson.FirstName, @ServerStoragePerson.LastName, born @ServerStoragePerson.BirthDate</div>
+            }
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div>This fourth example uses local browser storage ProtectedLocalStorage, a type by Microsoft which relies on IJSRuntime </div>
+        <ul>
+            <li>The storage is encrypted</li>
+            <li>The storage is valid across sessions inside this domain, across browser lifetime</li>
+            <li>The service is Scoped or Transient.</li>
+            <li>I created a simple generic class that can store anything, for reuse</li>
+            <li>it needs another re-render, state has changed does not solve it. maybe this has to do with it being a different storage?</li>
+            <li>I normally clear all storage on browser exit, so for this to work I have to exclude this domain from purging.</li>
+        </ul>
+        <div class="card">
+            <div class="card-header">Person4 (once entered by a user):</div>
+            @if (LocalStoragePerson is not null)
+            {
+                <div class="card-body">@LocalStoragePerson.FirstName, @LocalStoragePerson.LastName, born @LocalStoragePerson.BirthDate</div>
+            }
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div>This fifth example uses query parameters to pass information back and forth</div>
+    </div>
+    <div class="col-md-10">
+        <div>This sixth example could use a database, but I've not implemented that only for showing it.</div>
+    </div>
+    <div class="col-md-10">
+        <div>This other example uses Blazored.LocalStorage. Tim Corey explains at https://www.youtube.com/watch?v=xuaF7U3oziA&t=388s</div>
+        <ul>
+            <li>AFAIK: it can be encrypted with some helper classes</li>
+            <li>The storage uses localstorage, so persists browser closes</li>
+            <li>is dependent on an external library</li>
+            <li>but can be necessary because in webassembly I could not get IJSRuntime to work on more complex types</li>
+        </ul>
+        <div class="card">
+            <div class="card-header">Go to the webassemply page at /was </div>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div>This example uses browser storage / Javascript InterOp, but in WebAssembly. Go to the relevant client page.</div>
+        <ul>
+            <li>I could only get it to work for simple types, both in localStorage and in sessionStorage</li>
+            <li>Well, after reading up on these javascript methods (after spending 6 hours) I've now learnt that these methods only store and retrieve strings and not objects....</li>
+        </ul>
+    </div>
+</div>
+
+@code {
+    // First persistency
+    [CascadingParameter]
+    public MainLayoutPerson? PersonFromMainLayout { get; set; }
+
+    // Second persistency
+    // [SupplyParameterFromForm(Name ="InjectedPersonForm")] // only needed if interactivity is off
+    public DIPerson personFromForm { get; set; } = new DIPerson();
+
+    private async void SaveInjectedPersonAsync()
+    {
+        // just accessing the injected DIPerson properties directly. In production probably a getter/setter method in the class is better
+        DIPerson.FirstName = personFromForm.FirstName;
+        DIPerson.LastName = personFromForm.LastName;
+        DIPerson.BirthDate = personFromForm.BirthDate;
+
+        //hijack form to also store third persistency
+        ServerStoragePerson = new();
+        ServerStoragePerson.FirstName = personFromForm.FirstName;
+        ServerStoragePerson.LastName = personFromForm.LastName;
+        ServerStoragePerson.BirthDate = personFromForm.BirthDate;
+        await SessionStorageProtectedBrowserStorage.SetAsync(ServerStoragePerson);
+
+        //hijack form to also store fourth persistency
+        LocalStoragePerson = new();
+        LocalStoragePerson.FirstName = personFromForm.FirstName;
+        LocalStoragePerson.LastName = personFromForm.LastName;
+        LocalStoragePerson.BirthDate = personFromForm.BirthDate;
+        await LocalStorageProtectedBrowserStorage.SetAsync(LocalStoragePerson);
+    }
+
+    // Third persistency, see above
+    public Person? ServerStoragePerson { get; set; }
+
+    public Person? LocalStoragePerson { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            ServerStoragePerson = await SessionStorageProtectedBrowserStorage.GetAsync();
+            LocalStoragePerson = await LocalStorageProtectedBrowserStorage.GetAsync();
+            StateHasChanged();
+        }
+    }
+}

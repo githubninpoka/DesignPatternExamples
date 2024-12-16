@@ -1,0 +1,72 @@
+﻿@page "/was"
+
+@* @inject LocalStorageContainer<Person> LocalStorageProtectedBrowserStorage *@
+@* no, the above does not work for client side rendering only server side rendering *@
+@* https://learn.microsoft.com/en-us/aspnet/core/blazor/state-management?view=aspnetcore-9.0&pivots=server#aspnet-core-protected-browser-storage *@
+
+@inject IJSRuntime JSRuntime
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
+<h3>WebAssemblyPersistencyPage</h3>
+
+<p> Let us make another person but with Blazored.LocalStorage</p>
+<label for="_BlazoredLocalstoragePerson.Firstname">First Name</label>
+<input type="text" class="form-control" @bind-value="_BlazoredLocalstoragePerson.FirstName" />
+<label for="_BlazoredLocalstoragePerson.Lastname">Last Name</label>
+<input type="text" class="form-control" @bind-value="_BlazoredLocalstoragePerson.LastName" />
+<label for="_BlazoredLocalstoragePerson.BirthDate">Birthdate</label>
+<input type="date" class="form-control" @bind-value="_BlazoredLocalstoragePerson.BirthDate" />
+<button type="button" class="btn btn-primary" @onclick="StorePersonAsync">Store Person</button>
+<br />
+
+@if (_showJSRuntimePerson is not null)
+{
+    <p> the JS persisted (sessionStorage) person is @_showJSRuntimePerson</p>
+}
+<br />
+
+@if (_showBlazoredLocalStoragePerson is not null)
+{
+    <p>A person that was entered through Blazored.LocalStorage in localStorage</p>
+    <p>@_showBlazoredLocalStoragePerson.FirstName, @_showBlazoredLocalStoragePerson.LastName, @_showBlazoredLocalStoragePerson.BirthDate </p>
+}
+
+@code {
+    private LocalPerson? _jsRuntimePerson = new LocalPerson();
+    private string? _showJSRuntimePerson;
+
+    private LocalPerson? _BlazoredLocalstoragePerson=new LocalPerson();
+    private LocalPerson? _showBlazoredLocalStoragePerson;
+
+
+    private async Task StorePersonAsync()
+    {
+        _jsRuntimePerson = _BlazoredLocalstoragePerson;
+
+        await localStorage.SetItemAsync<LocalPerson>("BlazoredLocalStoragePerson", _BlazoredLocalstoragePerson);
+        await Task.Delay(1000);
+        // calling JS like this requires a call to an existing JS method
+        await JSRuntime.InvokeVoidAsync("sessionStorage.setItem", "jsperson", $"{_jsRuntimePerson.FirstName},{_jsRuntimePerson.LastName},{_jsRuntimePerson.BirthDate}");
+        await JSRuntime.InvokeVoidAsync("localStorage.setItem", "jsperson", _jsRuntimePerson);
+
+        _showBlazoredLocalStoragePerson = await localStorage.GetItemAsync<LocalPerson?>("BlazoredLocalStoragePerson");
+
+        _showJSRuntimePerson = await JSRuntime.InvokeAsync<string>("sessionStorage.getItem", "jsperson");
+
+        StateHasChanged();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // I still have to navigate away and back for this to work.
+            // putting it in 'secondrender' does nothing either. Except keeping it stuck in a loop
+            // if I also include statehaschanged.. :-)
+            _showJSRuntimePerson = await JSRuntime.InvokeAsync<string>("sessionStorage.getItem", "jsperson");
+            _showBlazoredLocalStoragePerson = await localStorage.GetItemAsync<LocalPerson>("BlazoredLocalStoragePerson");
+            StateHasChanged();
+        }
+    }
+
+}

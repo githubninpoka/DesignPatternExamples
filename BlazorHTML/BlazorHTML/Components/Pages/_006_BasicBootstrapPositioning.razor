@@ -1,0 +1,22 @@
+﻿@page "/bootstrappositioning"
+
+<div class="pagecontainer container">
+<h3>_006_BasicBootstrapPositioning</h3>
+
+    <div class="container p-1">
+        <div class="d-inline">div one specified as d-inline</div>
+        <div class="d-inline">div two specified as d-inline</div>
+        <span class="d-block" style="border:solid;border-width:thin;border-color:white">span one specified as d-block</span>
+        <span class="d-block" style="border:solid;border-width:thin;border-color:white">span two specified as d-block</span>
+        <span class="d-inline-block" style="width:400px;border:solid;border-color:white;border-width:thin">span three specified as d-inline-block with a width</span>
+        <div class="d-none d-md-block">visible on medium and bigger</div>
+        <div class="position-relative" style="width:100%;height:80px;">
+            <p class="position-absolute end-0 bottom-0">This is positioned absolutely at the bottom right of a div with a set size</p>
+        </div>
+        <div class="position-fixed bottom-0">This div is fixed to the bottom</div>
+
+    </div>
+</div>
+@code {
+
+}

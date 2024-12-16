@@ -1,0 +1,66 @@
+﻿@page "/persistencyConsumingPage"
+@inject DIPerson DIPerson
+@inject SessionStorageContainer<Person> SessionStorageProtectedBrowserStorage
+@inject LocalStorageContainer<Person> LocalStorageProtectedBrowserStorage
+
+
+<h3>Persistency ConsumingPage</h3>
+
+<div>
+    From Main Layout
+    @if (PersonFromMainLayout is not null)
+    {
+        <div>@PersonFromMainLayout.FirstName, @PersonFromMainLayout.LastName, @PersonFromMainLayout.BirthDate</div>
+    }
+</div>
+<br />
+<div>
+    From DI Container
+    @if (DIPerson is not null)
+    {
+
+        <div>
+            @DIPerson.FirstName, @DIPerson.LastName, @DIPerson.BirthDate
+        </div>
+    }
+</div>
+<br />
+<div>
+    From ProtectedBrowserStorage Session Storage
+    @if (personFromSessionStorage is not null)
+    {
+        <div>
+            @personFromSessionStorage.FirstName, @personFromSessionStorage.LastName, @personFromSessionStorage.BirthDate
+        </div>
+    }
+</div>
+<br />
+<div>
+    From ProtectedLocalStorage Local Storage
+    @if (personFromLocalStorage is not null)
+    {
+        <div>
+            @personFromLocalStorage.FirstName, @personFromLocalStorage.LastName, @personFromLocalStorage.BirthDate
+        </div>
+    }
+</div>
+
+
+@code {
+    [CascadingParameter]
+    public MainLayoutPerson? PersonFromMainLayout { get; set; }
+
+    private Person? personFromSessionStorage;
+
+    private Person? personFromLocalStorage;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            personFromSessionStorage = await SessionStorageProtectedBrowserStorage.GetAsync();
+            personFromLocalStorage = await LocalStorageProtectedBrowserStorage.GetAsync();
+            StateHasChanged();
+        }
+    }
+}

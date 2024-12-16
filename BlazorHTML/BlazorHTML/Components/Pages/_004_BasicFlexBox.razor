@@ -1,0 +1,49 @@
+﻿@page "/flexbox"
+@rendermode InteractiveServer
+
+<div class="pagebackground">
+
+    <h3>_004_BasicFlexBox</h3>
+
+    <div class="bordered">This page aims to demonstrate the behavior of Flexbox items. The individual boxes have a set size.</div>
+
+    <input type="checkbox" @bind-value="IsFlex"/> Toggle Flexbox on or off <br/>
+    <input type="checkbox" @bind-value="IsInlineFlex" /> Toggle d-inline-flex on or off. Switch on Flexbox also. Does not work probably because of the article/main/body/html surroundings <br/>
+    <input type="checkbox" @bind-value="IsColumn" /> Toggle Flexbox row (off) or column (on) I've left out row reverse and column reverse <br/>
+    <input type="checkbox" @bind-value="IsWrap"/> Toggle Wrapping on or off <br/>
+    <input type="checkbox" @bind-value="IsCenterOnMainAxis"/> Toggle justify center the contained blocks on main axis <br/>
+    <input type="checkbox" @bind-value="IsCenterOnSecondaryAxis" /> Toggle align center the contained blocks on the secondary axis (align-items start / align-items-center) <br/>
+    <input type="checkbox" @bind-value="IsSpacingBetweenRows" /> Toggle between space and no space between wrapped rows (align-content-center no/yes) <br/>
+    <input type="checkbox" @bind-value="HasGaps" /> Toggle gaps between boxes (gap-2 / "" )
+    <div class="bordered parent 
+        @(IsFlex?(IsInlineFlex?"d-inline-flex ":"d-flex "):" ") 
+        @(IsColumn?"flex-column ":"flex-row ") 
+        @(IsWrap?"flex-wrap ":"flex-nowrap ") 
+        @(IsCenterOnMainAxis?"justify-content-center ":" ")
+        @(IsCenterOnSecondaryAxis?"align-items-center ": "align-items-start ")
+        @(IsSpacingBetweenRows?"align-content-center ":" ")
+        @(HasGaps?"gap-2 ": " ")
+
+
+    ">
+
+        @for(int i = 0; i < 10; i++)
+        {
+            <div class="bordered setsize d-flex justify-content-center align-items-center"> <span>This is Content @i</span> </div>
+        }
+
+    </div>
+
+</div>
+
+@code {
+    private bool IsFlex = false;
+    private bool IsInlineFlex = false;
+    private bool IsColumn = false;
+    private bool IsWrap = false;
+    private bool IsCenterOnMainAxis = false;
+    private bool IsCenterOnSecondaryAxis = false;
+    private bool IsSpacingBetweenRows = false;
+    private bool HasGaps = false;
+
+}

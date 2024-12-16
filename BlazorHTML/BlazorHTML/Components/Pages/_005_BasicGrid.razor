@@ -1,0 +1,71 @@
+﻿@page "/grid"
+
+<div class="pagecontainer">
+    <div> 005 Basic grid functionality</div>
+    <div>
+        Parent container with a named grid header sidebar body and footer.<br />
+        Using a container query. See for instance web dev simplified "responsive css will never be the same".
+        Sidebar gets moved in between with smaller screen and is none when small screen.
+        Also, notice how nicely the header changes from flex-row to flex-column.
+    </div>
+
+    <div id="parent2" class="d-grid">
+        <div id="child-5" class="child">
+            <div class="d-inline-flex">
+                This is the header.
+            </div>
+            <div class="d-inline-flex">
+                for instance a navbar
+            </div>
+        </div>
+        <div id="child-6" class="child">
+            This is the sidebar. for lists etc. Because it has some text it should wrap to constrain the width of the sidebar.
+        </div>
+        <div id="child-7" class="child">
+            The beef of the page. "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        </div>
+        <div id="child-8" class="child">
+            The footer disclaims any liability. In tegenstelling tot wat algemeen aangenomen wordt is Lorem Ipsum niet zomaar willekeurige tekst. het heeft zijn wortels in een stuk klassieke latijnse literatuur uit 45 v.Chr. en is dus meer dan 2000 jaar oud. Richard McClintock, een professor latijn aan de Hampden-Sydney College in Virginia, heeft één van de meer obscure latijnse woorden, consectetur, uit een Lorem Ipsum passage opgezocht, en heeft tijdens het zoeken naar het woord in de klassieke literatuur de onverdachte bron ontdekt. Lorem Ipsum komt uit de secties 1.10.32 en 1.10.33 van "de Finibus Bonorum et Malorum" (De uitersten van goed en kwaad) door Cicero, geschreven in 45 v.Chr. Dit boek is een verhandeling over de theorie der ethiek, erg populair tijdens de renaissance. De eerste regel van Lorem Ipsum, "Lorem ipsum dolor sit amet..", komt uit een zin in sectie 1.10.32.
+        </div>
+        <div id="child-9">
+            <div id="wildcarddiv">
+                <div id="wildcarddiv__text">
+                    TopRight
+                </div>
+            </div>
+            <div>
+                This is the wildcard div
+            </div>
+        </div>
+    </div>
+    <br />
+    <span>Parent container with four columns: 1fr, 100px, 100px and minmax(150px,1fr)</span><br />
+    <div id="parent1" class="d-grid">
+
+        <div id="child-1" class="child">
+            Element 1 spans 1 column and 3 rows
+        </div>
+        <div id="child-2" class="child">
+            Element 2 is just placed in order
+        </div>
+        <div id="child-3" class="child">
+            Element 3 spans 2 columns and two rows
+        </div>
+        <div id="child-4" class="child">
+            Element 4 spans 1 column and the bottom 2 rows
+        </div>
+        <div id="child-x" class="child">
+            <div id="badgediv">
+                <div id="badgediv__badge">topright of *</div>
+            </div>
+            <div>
+                I am the wildcard div, placed on top of others
+            </div>
+        </div>
+    </div>
+    <br />
+</div>
+
+@code {
+
+}

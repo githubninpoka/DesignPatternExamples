@@ -5,9 +5,10 @@
 <h3>ConsumingWebAssemblyPersistencePage</h3>
 
 <p>JSRuntime data: </p>
-@if(_jsRuntimePerson is not null)
+@if(_jsRuntimePersonString is not null)
 {
-    <p>@_jsRuntimePerson</p>
+    <p>@_jsRuntimePersonString</p>
+    <p>@_jsRuntimePerson.FirstName, @_jsRuntimePerson.LastName, @_jsRuntimePerson.BirthDate</p>
 }
 
 <br/>
@@ -21,12 +22,14 @@ Blazored LocalStorage data:
 
 @code {
     private LocalPerson? _blazorLocalStoragePerson;
-    private string? _jsRuntimePerson;
+    private string? _jsRuntimePersonString;
+    private LocalPerson? _jsRuntimePerson;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender){
-            _jsRuntimePerson = await JSRuntime.InvokeAsync<string>("sessionStorage.getItem", "jsperson");
+            _jsRuntimePersonString = await JSRuntime.InvokeAsync<string>("sessionStorage.getItem", "jsperson");
+            _jsRuntimePerson = System.Text.Json.JsonSerializer.Deserialize<LocalPerson>(_jsRuntimePersonString);
             _blazorLocalStoragePerson = await localStorage.GetItemAsync<LocalPerson?>("BlazoredLocalStoragePerson");
             StateHasChanged();
         }

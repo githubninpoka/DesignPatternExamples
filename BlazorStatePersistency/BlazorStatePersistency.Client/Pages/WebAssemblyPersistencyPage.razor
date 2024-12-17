@@ -46,8 +46,8 @@
         await localStorage.SetItemAsync<LocalPerson>("BlazoredLocalStoragePerson", _BlazoredLocalstoragePerson);
         await Task.Delay(1000);
         // calling JS like this requires a call to an existing JS method
-        await JSRuntime.InvokeVoidAsync("sessionStorage.setItem", "jsperson", $"{_jsRuntimePerson.FirstName},{_jsRuntimePerson.LastName},{_jsRuntimePerson.BirthDate}");
-        await JSRuntime.InvokeVoidAsync("localStorage.setItem", "jsperson", _jsRuntimePerson);
+        await JSRuntime.InvokeVoidAsync("sessionStorage.setItem", "jsperson", System.Text.Json.JsonSerializer.Serialize(_jsRuntimePerson));
+    await JSRuntime.InvokeVoidAsync("localStorage.setItem", "jsperson", _jsRuntimePerson);
 
         _showBlazoredLocalStoragePerson = await localStorage.GetItemAsync<LocalPerson?>("BlazoredLocalStoragePerson");
 

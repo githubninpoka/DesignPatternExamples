@@ -39,6 +39,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorStatePersistency", "B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorStatePersistency.Client", "BlazorStatePersistency\BlazorStatePersistency.Client\BlazorStatePersistency.Client.csproj", "{81FCA57E-93F1-4F95-9858-7ADD0E6FE7A3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexAndSimpleFuzzy", "Regex\RegexAndSimpleFuzzy.csproj", "{6D8DE4CB-DB57-4DD2-A323-3EBFE44D9EC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiCustomMiddleware", "WebApiCustomMiddleware\WebApiCustomMiddleware.csproj", "{1AA1DB6F-BDAF-4082-9340-12B6D8768E6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +121,14 @@ Global
 		{81FCA57E-93F1-4F95-9858-7ADD0E6FE7A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81FCA57E-93F1-4F95-9858-7ADD0E6FE7A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81FCA57E-93F1-4F95-9858-7ADD0E6FE7A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D8DE4CB-DB57-4DD2-A323-3EBFE44D9EC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D8DE4CB-DB57-4DD2-A323-3EBFE44D9EC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D8DE4CB-DB57-4DD2-A323-3EBFE44D9EC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D8DE4CB-DB57-4DD2-A323-3EBFE44D9EC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AA1DB6F-BDAF-4082-9340-12B6D8768E6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AA1DB6F-BDAF-4082-9340-12B6D8768E6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AA1DB6F-BDAF-4082-9340-12B6D8768E6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AA1DB6F-BDAF-4082-9340-12B6D8768E6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

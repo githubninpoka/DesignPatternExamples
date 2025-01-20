@@ -30,12 +30,13 @@ internal static class EbookQueries
     }
     internal static async Task BoolQueryWithQueryObject(OpenSearchClient client)
     {
-        MatchQuery match = new MatchQuery()
+        MatchQuery shiningPathsMatch = new MatchQuery()
         {
             Field = "fileName",
             Query = "shining",
             //Fuzziness = Fuzziness.Auto // works but is not yet needed
         };
+        shiningPathsMatch.Fuzziness = Fuzziness.Auto;
 
         MatchQuery elementaireDeeltjesMatch = new MatchQuery()
         {
@@ -46,16 +47,35 @@ internal static class EbookQueries
         MatchQuery textMatch = new MatchQuery()
         {
             Field = "bookText",
-            Query = "bananen"
+            Query = "niets"
         };
         BoolQuery boolQuery = new BoolQuery()
         {
             // works yay!
-            Should = [elementaireDeeltjesMatch,textMatch],
-            MinimumShouldMatch = 1, 
-            //Must = textMatch
+            //Should = [elementaireDeeltjesMatch,shiningPathsMatch],
+            //MinimumShouldMatch = 1, 
+            Must = [textMatch]
             
             
+        };
+        boolQuery.Should = [elementaireDeeltjesMatch, shiningPathsMatch];
+        //boolQuery.MinimumShouldMatch = 1;
+
+        //Field[] includedSourceFields = new Field[5];
+        //includedSourceFields[0] = new Field("title");
+        //includedSourceFields[1] = new Field("pages");
+        //includedSourceFields[2] = new Field("author");
+        //includedSourceFields[3] = new Field("filePath");
+        //includedSourceFields[4] = new Field("fileName");
+        List<Field> includedSourceFields = new();
+        includedSourceFields.Add(new Field("title"));
+        includedSourceFields.Add(new Field("fileName"));
+        
+
+
+        SourceFilter sf = new SourceFilter()
+        {
+            Includes = includedSourceFields.ToArray()
         };
 
         var query = new SearchRequest("ebooks")
@@ -65,9 +85,14 @@ internal static class EbookQueries
 
             // works yay!
             Query = boolQuery,
-            Size = 20
+            Size = 20,
+            
+            
 
         };
+        query.Source = sf;
+        query.Size = 5;
+
 
         var response = await client.SearchAsync<BookMetaData>(query);
         Console.WriteLine("waiting for enter");

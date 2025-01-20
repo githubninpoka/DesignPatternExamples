@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiCustomMiddleware", "W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleOpenSearchClient", "SimpleOpenSearchClient\SimpleOpenSearchClient\SimpleOpenSearchClient.csproj", "{2CA641DC-E8C1-4B2C-8A0D-73ABAA22E972}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CacheRedisBlazor", "CacheRedisBlazor\CacheRedisBlazor.csproj", "{70697782-6428-4919-B5C3-31A0F0FB1503}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,10 @@ Global
 		{2CA641DC-E8C1-4B2C-8A0D-73ABAA22E972}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CA641DC-E8C1-4B2C-8A0D-73ABAA22E972}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CA641DC-E8C1-4B2C-8A0D-73ABAA22E972}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70697782-6428-4919-B5C3-31A0F0FB1503}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70697782-6428-4919-B5C3-31A0F0FB1503}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70697782-6428-4919-B5C3-31A0F0FB1503}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70697782-6428-4919-B5C3-31A0F0FB1503}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

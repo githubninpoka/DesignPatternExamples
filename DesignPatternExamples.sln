@@ -45,6 +45,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleOpenSearchClient", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CacheRedisBlazor", "CacheRedisBlazor\CacheRedisBlazor.csproj", "{70697782-6428-4919-B5C3-31A0F0FB1503}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireApp1.AppHost", "AspireApp1\AspireApp1.AppHost\AspireApp1.AppHost.csproj", "{8D59DFE7-9A77-4F12-956E-AD5DBA1A5273}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireApp1.ServiceDefaults", "AspireApp1\AspireApp1.ServiceDefaults\AspireApp1.ServiceDefaults.csproj", "{3688BF75-946A-43AD-BA23-3E4E83CADBDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireApp1.ApiService", "AspireApp1\AspireApp1.ApiService\AspireApp1.ApiService.csproj", "{F4AE2367-18FF-4C79-A0DB-E8E5E2FF1742}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireApp1.Web", "AspireApp1\AspireApp1.Web\AspireApp1.Web.csproj", "{592E65D2-DD5C-492F-B2F5-30363C3310EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorTooltip", "BlazorTooltip\BlazorTooltip.csproj", "{FD766776-C7E3-4B93-A134-DE14F1545F12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +145,26 @@ Global
 		{70697782-6428-4919-B5C3-31A0F0FB1503}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70697782-6428-4919-B5C3-31A0F0FB1503}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70697782-6428-4919-B5C3-31A0F0FB1503}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D59DFE7-9A77-4F12-956E-AD5DBA1A5273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D59DFE7-9A77-4F12-956E-AD5DBA1A5273}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D59DFE7-9A77-4F12-956E-AD5DBA1A5273}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D59DFE7-9A77-4F12-956E-AD5DBA1A5273}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3688BF75-946A-43AD-BA23-3E4E83CADBDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3688BF75-946A-43AD-BA23-3E4E83CADBDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3688BF75-946A-43AD-BA23-3E4E83CADBDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3688BF75-946A-43AD-BA23-3E4E83CADBDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4AE2367-18FF-4C79-A0DB-E8E5E2FF1742}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4AE2367-18FF-4C79-A0DB-E8E5E2FF1742}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4AE2367-18FF-4C79-A0DB-E8E5E2FF1742}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4AE2367-18FF-4C79-A0DB-E8E5E2FF1742}.Release|Any CPU.Build.0 = Release|Any CPU
+		{592E65D2-DD5C-492F-B2F5-30363C3310EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{592E65D2-DD5C-492F-B2F5-30363C3310EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{592E65D2-DD5C-492F-B2F5-30363C3310EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{592E65D2-DD5C-492F-B2F5-30363C3310EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD766776-C7E3-4B93-A134-DE14F1545F12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD766776-C7E3-4B93-A134-DE14F1545F12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD766776-C7E3-4B93-A134-DE14F1545F12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD766776-C7E3-4B93-A134-DE14F1545F12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

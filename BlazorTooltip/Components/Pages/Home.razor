@@ -1,0 +1,30 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@inject IJSRuntime JS
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+For getting Tooltips to work:
+<br />
+<ul>
+    <li>add the correct script to app.razor. you need either the popper.js or the bundle</li>
+    <li>create an element that has:</li>
+    <li> - data-bs-toggle=someidentifier</li>
+    <li> - data-etc -> https://getbootstrap.com/docs/5.0/components/tooltips/</li>
+    <li>initialize the tooltip with javascript (see OnAfterRenderAsync)</li>
+    <li>Remember: without title there is no content to the tooltip and it will not show</li>
+</ul>
+<br />
+
+<button data-bs-toggle="whatever" title="The content of the tooltip" data-bs-placement="right">Hover me</button>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JS.InvokeVoidAsync("eval", "new bootstrap.Tooltip(document.querySelector('[data-bs-toggle=\"whatever\"]'))");
+    }
+
+
+}

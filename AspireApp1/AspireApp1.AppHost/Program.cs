@@ -7,7 +7,7 @@ builder.AddProject<Projects.AspireApp1_Web>("webfrontend")
     .WithReference(apiService)
     .WaitFor(apiService);
 
-builder.AddProject<Projects.BlazorPopover>("blazorpopover");
+
 
 builder.AddProject<Projects.BlazorTooltip>("blazortooltip");
 

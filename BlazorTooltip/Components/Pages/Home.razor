@@ -1,6 +1,9 @@
 ﻿@page "/"
 @rendermode InteractiveServer
 @inject IJSRuntime JS
+@inject ILogger<Home> logger
+@inject TooltipService tooltipService
+
 
 <PageTitle>Home</PageTitle>
 
@@ -20,7 +23,32 @@ For getting Tooltips to work:
 
 <button data-bs-toggle="whatever" title="The content of the tooltip" data-bs-placement="right">Hover me</button>
 
+<p>package blazor.bootstrap  installed</p>
+<ul>
+    <li>followed the exact instructions at https://blazor.radzen.com/get-started?theme=material3 to set up radzen</li>
+    <li>changed the Style property in the ToolTipOptions</li>
+</ul>
+
+<RadzenButton Click="@ButtonClicked" Text="Hi" MouseEnter="@(args => ShowTooltip(args) )"></RadzenButton>
+
+
 @code {
+    void ButtonClicked()
+    {
+        // Handle the Click event of RadzenButton
+        logger.LogInformation("iep");
+
+    }
+    TooltipOptions tto = new TooltipOptions(){
+        Style="background:green;color:purple",
+        Duration=10000
+    };
+    void ShowTooltip(ElementReference elementReference, TooltipOptions options = null)
+    {
+        tooltipService.Open(elementReference, "Hello!", tto);
+    }
+
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await JS.InvokeVoidAsync("eval", "new bootstrap.Tooltip(document.querySelector('[data-bs-toggle=\"whatever\"]'))");

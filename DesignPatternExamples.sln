@@ -55,6 +55,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireApp1.Web", "AspireApp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorTooltip", "BlazorTooltip\BlazorTooltip.csproj", "{FD766776-C7E3-4B93-A134-DE14F1545F12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreMultipleObjects", "EFCoreMultipleObjects\EFCoreMultipleObjects\EFCoreMultipleObjects.csproj", "{20559008-06BF-47DE-857B-3CA496805867}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -165,6 +167,10 @@ Global
 		{FD766776-C7E3-4B93-A134-DE14F1545F12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD766776-C7E3-4B93-A134-DE14F1545F12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD766776-C7E3-4B93-A134-DE14F1545F12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20559008-06BF-47DE-857B-3CA496805867}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20559008-06BF-47DE-857B-3CA496805867}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20559008-06BF-47DE-857B-3CA496805867}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20559008-06BF-47DE-857B-3CA496805867}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

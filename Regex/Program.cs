@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 
 using Raffinert.FuzzySharp;
 using Raffinert.FuzzySharp.SimilarityRatio.Scorer;
-
+using RegexAndSimpleFuzzy;
 using static System.Formats.Asn1.AsnWriter;
 //using DuoVia.FuzzyStrings;
 //using GSF.FuzzyStrings;
@@ -149,3 +149,14 @@ string toFind = "sandalhon";
 // now with package GSF.Core
 //bool areSimilar = x[0].ApproximatelyEquals(toFind, FuzzyStringComparisonOptions.UseLevenshteinDistance, FuzzyStringComparisonTolerance.Normal);
 //Console.WriteLine($"Is {x[0]} equal to {toFind}: {areSimilar}");
+
+// now just some matches against a certain pattern.
+Console.WriteLine(StringChecker.IsMatchForPattern("banaan"));
+Console.WriteLine(StringChecker.IsMatchForPattern("ba naan"));
+Console.WriteLine(StringChecker.IsMatchForPattern("ba\"naan"));
+Console.WriteLine(StringChecker.IsMatchForPattern("ba[naan"));
+Console.WriteLine(StringChecker.IsMatchForPattern("ba{naan"));
+Console.WriteLine(StringChecker.IsMatchForPattern("ba(naan"));
+Console.WriteLine(StringChecker.IsMatchForPattern("ba3naan"));
+Console.WriteLine(StringChecker.IsMatchForPattern("Da'ath"));
+Console.WriteLine(StringChecker.IsMatchForPattern("ba   naan"));

@@ -12,16 +12,18 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
         builder.Services.AddTransient<MyCustomMiddleware>();
+        builder.Services.AddTransient<MyCustomExceptionMiddleware>();
         var app = builder.Build();
 
 
         // example of a simple custom middleware (see the builder above)
+        app.UseMiddleware<MyCustomExceptionMiddleware>();
         app.UseMiddleware<MyCustomMiddleware>();
 
         // the below is messy, but it works and shows different use cases for middleware.
         // app.Map, app.MapWhen, app.Use. I skipped app.UseWhen which is for rejoining a branch.
         // branching out
-        app.Map("/otherRoute", (IApplicationBuilder appBuilder) =>
+        app.Map("/badroute", (IApplicationBuilder appBuilder) =>
         {
             appBuilder.Use(async (HttpContext context, RequestDelegate next) =>
             {
@@ -39,6 +41,10 @@ public class Program
                 await next(context);
 
                 await context.Response.WriteAsync("Alternative Middleware #2: After calling next");
+            });
+            appBuilder.Use(async (HttpContext context, RequestDelegate next) =>
+            {
+                throw new Exception("I don't know what happened");
             });
         });
 

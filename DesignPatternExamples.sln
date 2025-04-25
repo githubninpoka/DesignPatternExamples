@@ -59,6 +59,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreMultipleObjects", "EF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oreilly_HF_StrategyPattern", "Oreilly_HF_StrategyPattern\Oreilly_HF_StrategyPattern.csproj", "{27449CBD-3A84-4E43-90C9-7873733367BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "netcorePipelineExamples", "netcorePipelineExamples\netcorePipelineExamples.csproj", "{FBD24D94-E166-4C0A-AEC8-25E27B794D43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -177,6 +179,10 @@ Global
 		{27449CBD-3A84-4E43-90C9-7873733367BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27449CBD-3A84-4E43-90C9-7873733367BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27449CBD-3A84-4E43-90C9-7873733367BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBD24D94-E166-4C0A-AEC8-25E27B794D43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBD24D94-E166-4C0A-AEC8-25E27B794D43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBD24D94-E166-4C0A-AEC8-25E27B794D43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBD24D94-E166-4C0A-AEC8-25E27B794D43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

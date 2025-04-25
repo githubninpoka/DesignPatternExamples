@@ -7,6 +7,10 @@
         // encapsulates each one, and makes them interchangeable. Strategy lets the algorithm vary independently from
         // clients that use it."
 
+        // Practically: just let any duck type inherit from duck. and 'load it up' with the appropriate behaviors.
+        // no appropriate behavior available? just add the behavior to the library of available behaviors.
+        // Open for extension, closed for modification...
+
         // Design principles:
         // Encapsulate those aspects of your class that change and separate them from the rest into other types
         // Program to an interface, not a concrete implementation

@@ -3,6 +3,11 @@ using ServiceBusDemoSender.Services;
 
 namespace ServiceBusDemoSender
 {
+
+
+    // rewrite to .net9 from a video by Tim Corey
+    // https://www.youtube.com/watch?v=v52yC9kq0Yg&t=1617s
+
     public class Program
     {
         public static void Main(string[] args)

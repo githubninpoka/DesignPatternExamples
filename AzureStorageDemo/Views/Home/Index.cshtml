@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model IndexModel
+
+<div class="text-center">
+    <h1 class="display-4">Upload demo</h1>
+
+</div>
+@if (Model.PageErrors?.Count > 0)
+{
+    <ul class="text-danger">
+        @foreach (var error in Model.PageErrors)
+        {
+            <li>@error</li>
+        }
+    </ul>
+}
+@if(!string.IsNullOrWhiteSpace(Model.FileUrl))
+{
+    <p> Uploaded File Url: @Model.FileUrl</p>
+}
+
+<h2>Upload File</h2>
+<form method="post" enctype="multipart/form-data" 
+asp-controller="Home"
+asp-action="UploadFile">
+    <input type="file" name="formFile" class="form-control mb-3 " />
+ <button type="submit" class="btn btn-primary mb-3"> Upload</button>
+</form>
+
+<h2> Retrieve File</h2>
+<form method="post" asp-action="GetFile" asp-controller="Home">
+    <label for="fileUrl" class="form-label">File URL:</label>
+    <input type="text" placeholder="filename" name="fileUrl" id="fileUrl" class="form-control mb-3" />
+    <button type="submit" class="btn btn-primary mb-3"> Download</button>
+</form>

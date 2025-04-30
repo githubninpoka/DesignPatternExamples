@@ -8,13 +8,11 @@ namespace AzureStorageDemo.DataAccess;
 
 public class AzureBlobStorage : IAzureBlobStorage
 {
-    private readonly IOptions<AzureBlobStorageOptions> _azureBlobStorageOptions;
     private readonly AzureBlobStorageOptions _azureBlobStorage;
 
     public AzureBlobStorage(IOptions<AzureBlobStorageOptions> azureBlobStorageOptions)
     {
-        _azureBlobStorageOptions = azureBlobStorageOptions;
-        _azureBlobStorage = _azureBlobStorageOptions.Value;
+        _azureBlobStorage = azureBlobStorageOptions.Value;
     }
 
     public async Task<string> UploadFileAsync(IFormFile file)
@@ -36,11 +34,12 @@ public class AzureBlobStorage : IAzureBlobStorage
     public async Task<FileContentResult> DownloadFileAsync(string url)
     {
         Uri blobUri = new(url);
-        StorageSharedKeyCredential creds = new(
-            _azureBlobStorage.StorageAccountName,
-            _azureBlobStorage.StorageAccountKey
+        StorageSharedKeyCredential credentials = new( 
+            accountName: _azureBlobStorage.StorageAccountName,
+            accountKey: _azureBlobStorage.StorageAccountKey
             );
-        BlobClient blobClient = new(blobUri, creds);
+
+        BlobClient blobClient = new(blobUri: blobUri, credential: credentials);
 
         var downloadResponse = await blobClient.DownloadStreamingAsync();
         using var memoryStream = new MemoryStream();
@@ -48,8 +47,8 @@ public class AzureBlobStorage : IAzureBlobStorage
         memoryStream.Position = 0;
 
         return new FileContentResult(
-            memoryStream.ToArray(),
-            downloadResponse.Value.Details.ContentType)
+            fileContents: memoryStream.ToArray(),
+            contentType: downloadResponse.Value.Details.ContentType)
         { FileDownloadName = blobUri.Segments.Last() };
     }
 }

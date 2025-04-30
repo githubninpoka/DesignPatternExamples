@@ -7,12 +7,10 @@ namespace AzureStorageDemo.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly IAzureBlobStorage _azureBlobs;
 
-        public HomeController(ILogger<HomeController> logger, IAzureBlobStorage azureBlobs)
+        public HomeController( IAzureBlobStorage azureBlobs)
         {
-            _logger = logger;
             _azureBlobs = azureBlobs;
         }
 
